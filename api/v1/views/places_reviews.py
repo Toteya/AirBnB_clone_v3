@@ -53,7 +53,8 @@ def review_obj(review_id):
         if data is None:
             abort(400, 'Not a JSON')
         for key, value in data.items():
-            if key in ['id', 'user_id', 'place_id', 'created_at', 'updated_at']:
+            if key in ['id', 'user_id', 'place_id',
+                       'created_at', 'updated_at']:
                 continue
             setattr(review, key, value)
             review.save()
