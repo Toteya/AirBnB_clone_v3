@@ -40,7 +40,6 @@ def city_func(city_id):
     """
     city_dict = {}
     key = f"City.{city_id}"
-    print("KEY: {}".format(key), file=sys.stderr)
     city = models.storage.all().get(key)
     if city is None:
         abort(404)
