@@ -57,4 +57,6 @@ def city_func(city_id):
                 continue
             if hasattr(city, key):
                 setattr(city, key, value)
+            city.save()
+            city_dict = city.to_dict()
     return jsonify(city_dict)
