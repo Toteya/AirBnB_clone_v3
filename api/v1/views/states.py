@@ -10,7 +10,6 @@ import sys
 def states():
     """Return a list of all States
     """
-    from api.v1.app import app
     if request.method == 'GET':
         states = []
         for obj in models.storage.all(models.state.State).values():
@@ -44,14 +43,14 @@ def state_obj(state_id):
     elif request.method == 'DELETE':
         state.delete()
     elif request.method == 'PUT':
-
         data = request.get_json(silent=True)
         if data is None:
             abort(400, 'Not a JSON')
         for key, value in data.items():
             if key in ['id', 'created_at', 'updated_at']:
                 continue
-            setattr(state, key, value)
+            if hasattr(state, key):
+                setattr(state, key, value)
             state.save()
             state_dict = state.to_dict()
     return jsonify(state_dict)
