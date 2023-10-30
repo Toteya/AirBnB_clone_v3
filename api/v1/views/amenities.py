@@ -7,8 +7,7 @@ from flask import abort, Flask, jsonify, request
 import models
 
 
-@app_views.route('/amenities', strict_slashes=False,
-                 methods=['GET', 'POST'])
+@app_views.route('/amenities', strict_slashes=False, methods=['GET', 'POST'])
 def amenities_func():
     if request.method == 'GET':
         amenities = []
@@ -24,6 +23,7 @@ def amenities_func():
         obj = models.amenity.Amenity(**data)
         obj.save()
         return jsonify(obj.to_dict()), 201
+
 
 @app_views.route('/amenities/<amenity_id>', strict_slashes=False,
                  methods=['GET', 'DELETE'])
