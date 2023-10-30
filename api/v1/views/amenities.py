@@ -11,7 +11,7 @@ import models
 def amenities_func():
     if request.method == 'GET':
         amenities = []
-        for obj in models.storage.all(models.amenities.Amenity).values():
+        for obj in models.storage.all(models.amenity.Amenity).values():
             amenities.append(obj.to_dict())
         return jsonify(amenities)
     elif request.method == 'POST':
@@ -26,7 +26,7 @@ def amenities_func():
 
 
 @app_views.route('/amenities/<amenity_id>', strict_slashes=False,
-                 methods=['GET', 'DELETE'])
+                 methods=['GET', 'DELETE', 'PUT'])
 def amenity_func(amenity_id):
     amenity_dict = {}
     key = f"Amenity.{amenity_id}"
@@ -47,4 +47,4 @@ def amenity_func(amenity_id):
             setattr(amenity, key, value)
             amenity.save()
             amenity_dict = amenity.to_dict()
-    return jsonify(amenity_dict())
+    return jsonify(amenity_dict)

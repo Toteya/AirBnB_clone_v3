@@ -12,7 +12,7 @@ def users_func():
     if request.method == 'GET':
         users = []
         for obj in models.storage.all(models.user.User).values():
-            states.append(obj.to_dict())
+            users.append(obj.to_dict())
         return jsonify(users)
     elif request.method == 'POST':
         data = request.get_json(silent=True)
@@ -29,7 +29,7 @@ def users_func():
 
 @app_views.route('/users/<user_id>', strict_slashes=False,
                  methods=['GET', 'DELETE', 'PUT'])
-def state_obj(state_id):
+def user_obj(user_id):
     """Returns a State object matching the given id
     """
     user_dict = {}
