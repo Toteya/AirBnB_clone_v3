@@ -25,7 +25,7 @@ def states():
         # print("DATA: {} {}".format(data, type(data)), file=sys.stderr)
         obj = models.state.State(**data)
         obj.save()
-        return jsonify(obj.to_dict())
+        return jsonify(obj.to_dict()), 201
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False,

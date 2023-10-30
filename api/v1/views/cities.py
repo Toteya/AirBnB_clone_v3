@@ -30,7 +30,7 @@ def cities_func(state_id):
         data.update({'state_id': state_id})
         obj = models.city.City(**data)
         obj.save()
-        return jsonify(obj.to_dict())
+        return jsonify(obj.to_dict()), 201
 
 
 @app_views.route('/cities/<city_id>', strict_slashes=False,
