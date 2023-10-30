@@ -57,6 +57,6 @@ def place_obj(place_id):
             if key in ['id', 'user_id', 'city_id', 'created_at', 'updated_at']:
                 continue
             setattr(place, key, value)
-            state.save()
-            state_dict = state.to_dict()
-    return jsonify(state_dict), 200
+            place.save()
+            place_dict = place.to_dict()
+    return jsonify(place_dict), 200
