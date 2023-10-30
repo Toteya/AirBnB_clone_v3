@@ -3,7 +3,7 @@
 A flask web application
 """
 from api.v1.views import app_views
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 import os
 
@@ -15,6 +15,12 @@ app.register_blueprint(app_views)
 def close_storage(exception=None):
     """ calls method close """
     storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found():
+    """ returns a json formatted '404' status """
+    return jsonify({"error": "Not found"})
 
 
 if __name__ == "__main__":
