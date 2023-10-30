@@ -7,7 +7,7 @@ import models
 
 @app_views.route('/users', strict_slashes=False, methods=['GET', 'POST'])
 def users_func():
-    """Return a list of all States
+    """Return a list of all Users
     """
     if request.method == 'GET':
         users = []
@@ -30,7 +30,7 @@ def users_func():
 @app_views.route('/users/<user_id>', strict_slashes=False,
                  methods=['GET', 'DELETE', 'PUT'])
 def user_obj(user_id):
-    """Returns a State object matching the given id
+    """Returns a User object matching the given id
     """
     user_dict = {}
     key = f"User.{user_id}"
