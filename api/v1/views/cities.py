@@ -52,7 +52,7 @@ def city_func(city_id):
         if data is None:
             abort(400, 'Not a JSON')
         for key, value in data.items():
-            if key in ['id', 'created_at', 'updated_at']:
+            if key in ['id', 'state_id', 'created_at', 'updated_at']:
                 continue
             if hasattr(city, key):
                 setattr(city, key, value)
