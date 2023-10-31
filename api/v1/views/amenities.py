@@ -29,7 +29,7 @@ def amenities_func():
                  methods=['GET', 'DELETE', 'PUT'])
 def amenity_func(amenity_id):
     amenity_dict = {}
-    key = "{}.{}".format(models.amenity.Amenity, amenity_id)
+    key = "{}.{}".format(models.amenity.Amenity.__name__, amenity_id)
     amenity = models.storage.all().get(key)
     if amenity is None:
         abort(404)

@@ -11,7 +11,7 @@ import sys
 def places_func(city_id):
     """Return a list of all Places
     """
-    key = "{}.{}".format(models.city.City, city_id)
+    key = "{}.{}".format(models.city.City.__name__, city_id)
     city = models.storage.all().get(key)
     if city is None:
         abort(404)
@@ -41,7 +41,7 @@ def place_obj(place_id):
     """Returns a Place object matching the given id
     """
     place_dict = {}
-    key = "{}.{}".format(models.place.Place, place_id)
+    key = "{}.{}".format(models.place.Place.__name__, place_id)
     place = models.storage.all().get(key)
     if place is None:
         abort(404)

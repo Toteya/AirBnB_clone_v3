@@ -33,7 +33,7 @@ def user_obj(user_id):
     """Returns a User object matching the given id
     """
     user_dict = {}
-    key = "{}.{}".format(models.user.User, user_id)
+    key = "{}.{}".format(models.user.User.__name__, user_id)
     user = models.storage.all().get(key)
     if user is None:
         abort(404)
