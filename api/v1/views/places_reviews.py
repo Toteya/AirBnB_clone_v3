@@ -24,8 +24,13 @@ def reviews_func(place_id):
         data = request.get_json(silent=True)
         if data is None:
             abort(400, 'Not a JSON')
-        if data.get('user_id') is None:
+        user_id = data.get('user_id')
+        if user_id is None:
             abort(400, 'Missing user_id')
+        user_key = "{}.{}".format(models.user.User.__name__, user_id)
+        user = models.storage.all().get(user_key)
+        if user is None:
+            abort(404)
         if data.get('text') is None:
             abort(400, 'Missing text')
         data.update({'place_id': place_id})
