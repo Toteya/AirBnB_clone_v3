@@ -11,7 +11,7 @@ import sys
 def reviews_func(place_id):
     """Return a list of all Reviews
     """
-    key = f"Place.{place_id}"
+    key = "{}.{}".format(models.place.Place, place_id)
     place = models.storage.all().get(key)
     if place is None:
         abort(404)
@@ -40,7 +40,7 @@ def review_obj(review_id):
     """Returns a Review object matching the given id
     """
     review_dict = {}
-    key = f"Review.{review_id}"
+    key = "{}.{}".format(models.review.Review, review_id)
     review = models.storage.all().get(key)
     if review is None:
         abort(404)

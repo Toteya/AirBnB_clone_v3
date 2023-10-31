@@ -11,7 +11,7 @@ import sys
 def cities_func(state_id):
     """Return a list of all City objects
     """
-    key = f"State.{state_id}"
+    key = "{}.{}".format(models.state.State, state_id)
     state = models.storage.all().get(key)
     if state is None:
         abort(404)
@@ -39,7 +39,7 @@ def city_func(city_id):
     """Returns a city object
     """
     city_dict = {}
-    key = f"City.{city_id}"
+    key = "{}.{}".format(models.city.City, city_id)
     city = models.storage.all().get(key)
     if city is None:
         abort(404)

@@ -34,7 +34,7 @@ def state_obj(state_id):
     """Returns a State object matching the given id
     """
     state_dict = {}
-    key = f"State.{state_id}"
+    key = "{}.{}".format(models.state.State, state_id)
     state = models.storage.all().get(key)
     if state is None:
         abort(404)
