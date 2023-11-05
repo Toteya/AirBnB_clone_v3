@@ -47,6 +47,8 @@ def places_search_func():
             places_list.append(place)
 
     if amenities:
+        if not any([states, cities]):
+            places_list = list(models.storage.all(models.place.Place).values())
         place_ids = []
         for place in places_list:
             amenity_ids = [amenity.id for amenity in place.amenities]
