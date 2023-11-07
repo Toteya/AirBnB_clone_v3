@@ -18,6 +18,7 @@ class User(BaseModel, Base):
         last_name = Column(String(128), nullable=True)
         places = relationship("Place", backref="user")
         reviews = relationship("Review", backref="user")
+
     else:
         email = ""
         password = ""
@@ -26,4 +27,5 @@ class User(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
+
         super().__init__(*args, **kwargs)
