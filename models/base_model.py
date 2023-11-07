@@ -47,7 +47,7 @@ class BaseModel:
                 try:
                     hash_object = hashlib.md5(bytes.fromhex(self.password))
                 except Exception:
-                    hashed_pwd = hashlib.md5(self.password.encode());
+                    hashed_pwd = hashlib.md5(self.password.encode())
                     self.password = hashed_pwd.hexdigest()
         else:
             self.id = str(uuid.uuid4())
